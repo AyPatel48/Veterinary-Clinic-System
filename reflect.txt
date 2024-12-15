@@ -1,0 +1,74 @@
+/*/////////////////////////////////////////////////////////////////////////
+                        Assignment 1 - Milestone 3
+Full Name  : AYUSHKUMAR VIPULBHAI PATEL
+Student ID#: 114473226
+Email      : apatel574@myseneca.ca
+Section    : G
+
+Authenticity Declaration:
+I declare this submission is the result of my own work and has not been
+shared with any other student or 3rd party content provider. This submitted
+piece of work is entirely of my own creation.
+/////////////////////////////////////////////////////////////////////////*/
+
+Q1. 
+
+	a) Function Prototype:
+int timeSlotAvailability(struct Date date, struct Time time, struct Appointment* appointment, int maxAppointments);
+	Explanation:
+The function timeSlotAvailability checks whether a particular time slot is available for scheduling an appointment. It takes in four parameters - date, time, appointment, and maxAppointments. date and time represent the date and time for which the availability needs to be checked. appointment is an array of appointments, and maxAppointments is the maximum number of appointments that can be scheduled.
+
+The function iterates through the appointment array and checks if the specified date and time match with any existing appointment. If a match is found, the function sets the IsslotAvailable flag to 1. If no match is found, the flag remains 0. Finally, the function returns the value of the IsslotAvailable flag, indicating whether the time slot is available or not.
+
+	b) Function Prototype:
+int nextEmptySlot(struct Appointment* appointment, int maxAppointments);
+	Explanation:
+The function nextEmptySlot returns the index of the next empty slot in the appointment array. It takes in two parameters - appointment and maxAppointments. appointment is an array of appointments, and maxAppointments is the maximum number of appointments that can be scheduled.
+
+The function iterates through the appointment array and checks if the patientNumber for a particular appointment is less than 1, which indicates that the slot is empty. If an empty slot is found, the function sets the available flag to 1 and returns the index of that slot. If no empty slot is found, the function returns the value of i, which is equal to maxAppointments in this case, indicating that there are no empty slots available.
+
+	c) Function Prototype:
+int AppointmentValidity(int patientNumber, struct Date date, struct Appointment* appointment, int maxAppointments);
+	Explanation:
+The function AppointmentValidity checks the validity of a particular appointment. It takes in four parameters - patientNumber, date, appointment, and maxAppointments. patientNumber and date represent the patient number and appointment date for which the validity needs to be checked. appointment is an array of appointments, and maxAppointments is the maximum number of appointments that can be scheduled.
+
+The function iterates through the appointment array and checks if the patientNumber and date match with any existing appointment. If a match is found, the function sets the valid flag to 1. If no match is found, the flag remains 0. Finally, the function returns the index of the matching appointment, or -1 if no matching appointment is found. Note that the returned index is i-1, because the loop increments i before exiting, so the index of the last checked appointment is i-1.
+
+
+
+Q2.  
+	In the clinic.c file, I have used only one scanf function.
+In a good program, it is often recommended to use fewer scanf functions and more user-made functions because it helps to improve the program's structure, readability, and maintainability.
+
+	Using user-made functions allows breaking down the program into smaller, more manageable chunks, making it easier to understand and maintain. It also helps to reduce code duplication, improve reusability, and make the code more modular. By splitting a program into smaller functions, each function can perform a specific task, making it easier to debug and test.
+
+	On the other hand, using scanf functions excessively can lead to code bloat, decreased readability, and a higher risk of bugs. scanf functions are also known to be vulnerable to buffer overflow and other security issues, making them less reliable and less secure than user-made functions.
+
+	Therefore, in a good program, scanf functions are typically used sparingly and only when needed. Instead, the program is structured in a way that makes use of user-made functions to accomplish specific tasks. This makes the program easier to read, understand, and maintain, and reduces the likelihood of bugs and security issues.
+
+
+
+Q3. 
+	The three functions that were created along with their use in different modules are as follows:
+
+	a) timeSlotAvailability: The function timeSlotAvailability is used in addAppointment function to check whether a given time slot is available for scheduling an appointment or not. It takes four parameters - date, time, appointment, and maxAppointments.
+
+In the addAppointment function, after taking the input for the date and time of the appointment, the timeSlotAvailability function is called to check whether the slot is available or not. If the slot is not available, an error message is displayed and the user is prompted to enter a different time. If the slot is available, the function returns a value of 0 and the loop terminates, allowing the appointment to be scheduled.
+
+Therefore, the timeSlotAvailability function plays a crucial role in ensuring that appointments are not double-booked and the scheduling process is error-free.
+
+	b) nextEmptySlot: The nextEmptySlot function is used in the addAppointment function to find the next available empty slot in the appointment array where a new appointment record can be added.
+
+The addAppointment function first checks whether the patient record exists in the patient array or not. If the patient record exists, the function then prompts the user to input the date and time of the appointment.
+
+Before assigning the date and time values to the appointment record, the addAppointment function checks whether the time slot is available or not by calling the timeSlotAvailability function. If the time slot is not available, an error message is displayed and the user is prompted to enter a new date and time.
+
+Once a valid date and time are entered, the nextEmptySlot function is called to find the next available empty slot in the appointment array where the new appointment record can be added. The index returned by the nextEmptySlot function is then used to assign the date, time, and patient number values to the appointment record at that index.
+
+Thus, the nextEmptySlot function plays an important role in ensuring that new appointment records are added to the appointment array in a sequential and organized manner, without any overlap or clashes with existing appointments.
+
+	c) AppointmentValidity: In the function removeAppointment, the AppointmentValidity function is used to check whether there is an appointment for a particular patient on a particular date.
+
+The AppointmentValidity function takes the patient number, date, appointment array, and the maximum number of appointments as input. It then iterates through the appointment array and checks if there is an appointment for the specified patient on the specified date. If there is, it returns the index of that appointment in the array. If there isn't, it returns -1 to indicate that there is no appointment for that patient on that date.
+
+In removeAppointment, the AppointmentValidity function is used to find the index of the appointment that needs to be removed. If the function returns a valid index, the function proceeds to display the patient data and ask for confirmation before removing the appointment record. If the function returns -1, it prints an error message indicating that there is no appointment for the specified patient on the specified date.
